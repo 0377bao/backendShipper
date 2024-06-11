@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const pathstore = path.join(__dirname, 'src');
+const pathstore = process.env.PATHSTORE;
 
 class NewsController {
     // [POST] api/news/create-news
