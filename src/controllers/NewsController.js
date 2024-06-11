@@ -2,10 +2,11 @@ const NewsService = require('../services/NewsService');
 const sharp = require('sharp');
 const path = require('path');
 const dotenv = require('dotenv');
+const { srcPath } = require('../../pathHelper');
 
 dotenv.config();
 
-const pathstore = process.env.PATHSTORE;
+const pathstore = srcPath;
 
 class NewsController {
     // [POST] api/news/create-news
