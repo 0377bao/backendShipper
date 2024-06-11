@@ -2,10 +2,11 @@ const sharp = require('sharp');
 const path = require('path');
 const dotenv = require('dotenv');
 const RankService = require('../services/RankService');
+const { srcPath } = require('../../pathHelper');
 
 dotenv.config();
 
-const pathstore = process.env.PATHSTORE;
+const pathstore = srcPath;
 
 class RankController {
     // [POST] api/rank/create-rank
