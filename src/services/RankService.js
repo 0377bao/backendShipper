@@ -45,6 +45,22 @@ class RankService {
             }
         });
     }
+    getAllRank() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const getRank = await RankModel.find().sort({ updatedAt: -1 });
+                if (getRank) {
+                    resolve({
+                        status: 'OK',
+                        message: 'Get Rank Success',
+                        data: getRank,
+                    });
+                }
+            } catch (e) {
+                reject(e);
+            }
+        });
+    }
     deleteRank(id) {
         return new Promise(async (resolve, reject) => {
             try {

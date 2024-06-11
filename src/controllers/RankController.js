@@ -62,6 +62,17 @@ class RankController {
             });
         }
     }
+    async getAllRank(req, res) {
+        try {
+            const responseService = await RankService.getAllRank();
+            return res.status(200).json(responseService);
+        } catch (e) {
+            console.log(e);
+            return res.status(404).json({
+                error: e,
+            });
+        }
+    }
     async getDetailsRank(req, res) {
         try {
             const id = req.params.id;
