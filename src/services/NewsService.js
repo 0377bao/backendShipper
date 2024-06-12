@@ -7,9 +7,8 @@ class NewsService {
     // [POST] /api/product/create-product
     createNews(newNews) {
         return new Promise(async (resolve, reject) => {
-            const pathweb = process.env.PATHWEB;
             const { title, description, image } = newNews;
-            const pathWebConvert = image.map((item) => pathweb + item);
+            const pathWebConvert = image.map((item) => item);
             try {
                 const createNews = await NewsModel.create({
                     title,

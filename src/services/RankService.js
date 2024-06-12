@@ -7,12 +7,11 @@ class RankService {
     // [POST] /api/product/create-product
     createRank(newRank) {
         return new Promise(async (resolve, reject) => {
-            const pathweb = process.env.PATHWEB;
             const { image, ...restRank } = newRank;
             try {
                 const createRank = await RankModel.create({
                     ...restRank,
-                    image: pathweb + image,
+                    image: image,
                 });
                 if (createRank) {
                     resolve({

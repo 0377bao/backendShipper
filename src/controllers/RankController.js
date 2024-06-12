@@ -24,17 +24,7 @@ class RankController {
             };
             const images = req.file;
             if (images) {
-                // Xử lý ảnh bằng
-                // Lấy hình ảnh từ client gửi lên thông qua thư viện sharp
-                const processedImageBuffer = await sharp(images.buffer).toBuffer();
-                // Tạo tên ảnh bằng thời gian thực sao cho không trùng lặp
-                const imageFilename = `rank-${Date.now()}.jpg`;
-                // Tạo đường dẫn của ảnh trên server
-                const imagePath = path.join(pathstore, 'public', 'images', 'rank', imageFilename);
-                // Ghi ảnh vào server với ảnh vừa lấy và thư mục
-                require('fs').writeFileSync(imagePath, processedImageBuffer);
-                // Tạo product với thông tin người dùng và đường dẫn image là đưỡng dẫn vừa tạo
-                response.image = `images/rank/${imageFilename}`;
+                response.image = images.path;
             } else {
                 return res.status(200).json({
                     status: 'ERR',

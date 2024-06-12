@@ -27,17 +27,7 @@ class NewsController {
             if (images) {
                 await Promise.all(
                     images.map(async (imageItem) => {
-                        // Xử lý ảnh bằng
-                        // Lấy hình ảnh từ client gửi lên thông qua thư viện sharp
-                        const processedImageBuffer = await sharp(imageItem.buffer).toBuffer();
-                        // Tạo tên ảnh bằng thời gian thực sao cho không trùng lặp
-                        const imageFilename = `news-${Date.now()}.jpg`;
-                        // Tạo đường dẫn của ảnh trên server
-                        const imagePath = path.join(pathstore, 'public', 'images', 'news', imageFilename);
-                        // Ghi ảnh vào server với ảnh vừa lấy và thư mục
-                        require('fs').writeFileSync(imagePath, processedImageBuffer);
-                        // Tạo product với thông tin người dùng và đường dẫn image là đưỡng dẫn vừa tạo
-                        urlImages.push(`images/news/${imageFilename}`);
+                        urlImages.push(imageItem.path);
                     }),
                 );
                 response.image = urlImages;
